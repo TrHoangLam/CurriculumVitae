@@ -1,0 +1,110 @@
+﻿@model IEnumerable<CurriculumVitae.Models.ExamScore>
+
+@{
+    ViewData["Title"] = "ExamScore";
+}
+
+
+
+
+
+
+<h1>ExamScore</h1>
+
+<p>
+    <a asp-action="Create">Create Points </a>
+</p>
+
+<form asp-controller="ExamScores" asp-action="Index">
+    <p>
+        ID Student: <input type="text" name="SearchString" />
+        <input type="submit" value="Search Exam Score" />
+    </p>
+
+</form>
+
+
+<table class="table" id="examScoresTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeacherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OralExam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FifteenMinScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MidtermExam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalExam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToltalScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewAndEvaluation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicReview)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConductComments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OralExam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FifteenMinScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MidtermExam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinalExam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToltalScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewAndEvaluation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcademicReview)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConductComments)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+            <br />
+            <button class="btn btn-primary" type="submit" id="button-export">Export Excel</button>
+
+<script src="bower_components\jquery\dist\jquery.min.js"></script>
+<script src="bower_components\jquery-table2excel\dist\jquery.table2excel.min.js"></script>
